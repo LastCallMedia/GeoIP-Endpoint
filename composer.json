@@ -1,4 +1,12 @@
 {
+  "name": "GeoIP Endpoint",
+  "description": "A web endpoint for looking up address information about IP Addresses",
+  "authors": [
+    {
+      "name": "Rob Bayliss",
+      "email": "rob@lastcallmedia.com"
+    }
+  ],
   "require": {
     "geoip2/geoip2":"~2.0",
     "silex/silex": "~1.1",

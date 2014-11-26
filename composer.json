@@ -1,5 +1,5 @@
 {
-  "name": "GeoIP Endpoint",
+  "name": "lastcall/geoip2-endpoint",
   "description": "A web endpoint for looking up address information about IP Addresses",
   "authors": [
     {

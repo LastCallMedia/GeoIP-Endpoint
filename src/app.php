@@ -10,7 +10,7 @@ $app->register(new \Silex\Provider\TwigServiceProvider(), array(
 ));
 
 $app->register(new \lastcall\GeoIp2\Silex\GeoIp2ServiceProvider(), array(
-  'geoip.db' => __DIR__ .'/../data/GeoLite2-City.mmdb',
+  'geoip.db' => realpath(__DIR__ .'/../') . '/data/GeoLite2-City.mmdb',
 ));
 
 $app->register(new \Knp\Provider\ConsoleServiceProvider(), array(

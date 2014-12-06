@@ -26,8 +26,11 @@ class RefreshDbCommand extends Command {
       if($response->isSuccessful()) {
         $output->writeln('Download successful.  Unzipping...');
         $app = $this->getSilexApplication();
-        $db = realpath($app['geoip.db']);
-        exec('gunzip -c ' . escapeshellarg($tmpfile) . ' > ' . escapeshellarg($db));
+        $data_directory = dirname($app['geoip.db']);
+        if (!file_exists($data_directory)) {
+          exec('mkdir ' . escapeshellarg($data_directory));
+        }
+        exec('gunzip -c ' . escapeshellarg($tmpfile) . ' > ' . escapeshellarg($app['geoip.db']));
         $output->write('Unzip successful.  Update complete.');
         return 0;
       }

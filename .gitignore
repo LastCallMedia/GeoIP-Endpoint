@@ -1,5 +1,7 @@
 vendor/
 composer.lock
-cache/
-data/*.mmdb
+cache/*
+!cache/.gitkeep
+data/*
+!data/.gitkeep
 src/config.php

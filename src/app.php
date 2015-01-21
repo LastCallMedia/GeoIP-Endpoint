@@ -1,6 +1,6 @@
 <?php
 
-$app = new \Silex\Application(array('debug' => TRUE));
+$app = new \Silex\Application();
 
 $app->register(new \Silex\Provider\TwigServiceProvider(), array(
   'twig.path' => __DIR__ .'/views',
@@ -29,7 +29,6 @@ $app->register(new \Silex\Provider\ServiceControllerServiceProvider());
 $app['legacyjs.controller'] = $app->share(function() use ($app) {
   return new \lastcall\GeoIp2\Silex\LegacyJsController($app['geoip'], $app['twig']);
 });
-//$app->mount('/legacy', new \lastcall\GeoIp2\Silex\LegacyJsController());
 $app->get('/country.js', 'legacyjs.controller:countryJSAction');
 $app->get('/city.js', 'legacyjs.controller:cityJSAction');
 

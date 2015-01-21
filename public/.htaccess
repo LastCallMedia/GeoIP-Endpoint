@@ -1,8 +1,22 @@
+# Do not allow caching of pages served by this app
+<IfModule mod_headers.c>
+    Header unset ETag
+    Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "Wed, 7 Jun 1983 04:00:00 GMT"
+</IfModule>
+
 <IfModule mod_rewrite.c>
     Options -MultiViews
 
     RewriteEngine On
     #RewriteBase /path/to/app
+
+    # Forbid access to this app unless it comes from
+    # a specific domain:
+    # RewriteCond %{HTTP_REFERRER} !^example.com$
+    # RewriteRule \.*$ - [F,NC]
+
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>

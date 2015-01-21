@@ -2,3 +2,4 @@ vendor/
 composer.lock
 cache/
 data/*.mmdb
+src/config.php

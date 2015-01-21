@@ -32,4 +32,9 @@ $app['legacyjs.controller'] = $app->share(function() use ($app) {
 $app->get('/country.js', 'legacyjs.controller:countryJSAction');
 $app->get('/city.js', 'legacyjs.controller:cityJSAction');
 
+// Allow additional configuration
+if(file_exists(__DIR__ . '/config.php')) {
+  include __DIR__ . '/config.php';
+}
+
 return $app;

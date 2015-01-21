@@ -27,14 +27,14 @@ class RefreshDbCommand extends Command {
         $output->writeln('Download successful.  Unzipping...');
         $app = $this->getSilexApplication();
         exec('gunzip -c ' . escapeshellarg($tmpfile) . ' > ' . escapeshellarg($app['geoip.db']));
-        $output->write('Unzip successful.  Update complete.');
+        $output->writeln('Unzip successful.  Update complete.');
         return 0;
       }
-      $output->writeln(sprintf('There was a problem donloading the file: unspecified error'));
+      $output->writeln(sprintf('There was a problem downloading the file: unspecified error'));
       return 1;
     }
     catch(\Exception $e) {
-      $output->writeln(sprintf('There was a problem donloading the file: %s', $e->getMessage()));
+      $output->writeln(sprintf('There was a problem downloading the file: %s', $e->getMessage()));
       return 1;
     }
   }

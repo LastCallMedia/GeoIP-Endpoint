@@ -13,7 +13,10 @@
     #RewriteBase /path/to/app
 
     # Forbid access to this app unless it comes from
-    # a specific domain:
+    # a specific domain.  This is not a secure method
+    # (the referer header can be spoofed), but it will
+    # prevent people from hotlinking to the script, which
+    # in this case would be necessary to make it useful.
     # RewriteCond %{HTTP_REFERRER} !^example.com$
     # RewriteRule \.*$ - [F,NC]
 

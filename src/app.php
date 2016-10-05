@@ -26,9 +26,9 @@ $app->extend('console', function(\Knp\Console\Application $console) {
 
 $app->register(new \Silex\Provider\ServiceControllerServiceProvider());
 
-$app['legacyjs.controller'] = $app->share(function() use ($app) {
+$app['legacyjs.controller'] = function() use ($app) {
   return new \lastcall\GeoIp2\Silex\LegacyJsController($app['geoip'], $app['twig']);
-});
+};
 $app->get('/country.js', 'legacyjs.controller:countryJSAction');
 $app->get('/city.js', 'legacyjs.controller:cityJSAction');
 
